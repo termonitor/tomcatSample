@@ -43,13 +43,16 @@ public class HttpServer {
                 input = socket.getInputStream();
                 output = socket.getOutputStream();
 
+                //create Request object and parse
                 Request request = new Request(input);
                 request.parse();
 
+                //create Response object
                 Response response = new Response(output);
                 response.setRequest(request);
                 response.sendStaticResource();
 
+                //Close the socket
                 socket.close();
 
                 shutdown = request.getUri().equals(SHUTDOWN_COMMAND);

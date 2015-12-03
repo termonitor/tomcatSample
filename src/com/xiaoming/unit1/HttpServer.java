@@ -1,5 +1,8 @@
 package com.xiaoming.unit1;
 
+import com.xiaoming.unit2.ServletProcessor;
+import com.xiaoming.unit2.StaticResourceProcessor;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -50,7 +53,15 @@ public class HttpServer {
                 //create Response object
                 Response response = new Response(output);
                 response.setRequest(request);
-                response.sendStaticResource();
+//                response.sendStaticResource();
+
+                if(request.getUri().startsWith("/servlet/")) {
+                    ServletProcessor processor = new ServletProcessor();
+                    processor.process(request, response);
+                } else {
+                    StaticResourceProcessor processor = new StaticResourceProcessor();
+                    processor.process(request, response);
+                }
 
                 //Close the socket
                 socket.close();

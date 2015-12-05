@@ -30,7 +30,7 @@ public class HttpResponse implements HttpServletResponse {
     protected String encoding = null;
     protected ArrayList cookies = new ArrayList();
     protected HashMap headers = new HashMap();
-    protected final SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy HH:mm:ss zzz", Locale.CHINESE);
+    protected final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     protected String message = getStatusMessage(HttpServletResponse.SC_OK);
     protected int status = HttpServletResponse.SC_OK;
 
@@ -215,7 +215,7 @@ public class HttpResponse implements HttpServletResponse {
         byte[] bytes = new byte[BUFFER_SIZE];
         FileInputStream fis = null;
         try {
-            File file = new File(Constants.WEB_ROOT, request.getUri());
+            File file = new File(Constants.WEB_ROOT, request.getRequestURI());
             if(file.exists()) {
                 fis = new FileInputStream(file);
                 int ch = fis.read(bytes, 0, BUFFER_SIZE);

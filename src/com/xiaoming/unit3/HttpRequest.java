@@ -55,7 +55,7 @@ public class HttpRequest implements HttpServletRequest {
         this.input = input;
     }
 
-    public void addHeader(String name, int value) {
+    public void addHeader(String name, String value) {
         name = name.toLowerCase();
         synchronized (headers) {
             ArrayList values = (ArrayList) headers.get(name);

@@ -1,7 +1,6 @@
-package com.xiaoming.unit3;
+package com.xiaoming.unit3.http;
 
-import com.xiaoming.unit2.ServletProcessor;
-import com.xiaoming.unit2.StaticResourceProcessor;
+import com.xiaoming.unit3.*;
 import org.apache.catalina.util.RequestUtil;
 import org.apache.catalina.util.StringManager;
 
@@ -23,7 +22,7 @@ public class HttpProcessor {
 
     protected String method = null;
     protected String queryString = null;
-    protected StringManager sm = StringManager.getManager("com.xiaoming.unit3");
+    protected StringManager sm = StringManager.getManager("com.xiaoming.unit3.http");
 
     public HttpProcessor(HttpConnector httpConnector) {
         this.httpConnector = httpConnector;
@@ -46,10 +45,10 @@ public class HttpProcessor {
 
             if (request.getRequestURI().startsWith("/servlet/")) {
                 ServletProcessor processor = new ServletProcessor();
-//                processor.process((Request)request, (Response)response);
+                processor.process(request, response);
             } else {
                 StaticResourceProcessor processor = new StaticResourceProcessor();
-//                processor.process((Request)request, (Response)response);
+                processor.process(request, response);
             }
 
             socket.close();

@@ -1,4 +1,4 @@
-package com.xiaoming.unit3;
+package com.xiaoming.unit3.http;
 
 import java.io.IOException;
 import java.net.InetAddress;

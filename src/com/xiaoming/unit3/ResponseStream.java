@@ -1,5 +1,7 @@
 package com.xiaoming.unit3;
 
+import com.xiaoming.unit3.http.HttpResponse;
+
 import javax.servlet.ServletOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;

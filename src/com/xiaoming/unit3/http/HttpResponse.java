@@ -1,8 +1,9 @@
-package com.xiaoming.unit3;
+package com.xiaoming.unit3.http;
 
 import com.xiaoming.unit2.Constants;
-import org.apache.catalina.Response;
-import org.apache.catalina.connector.ResponseStream;
+import com.xiaoming.unit3.ResponseStream;
+import com.xiaoming.unit3.ResponseWriter;
+import com.xiaoming.unit3.http.HttpRequest;
 import org.apache.catalina.util.CookieTools;
 
 import javax.servlet.*;
@@ -441,10 +442,10 @@ public class HttpResponse implements HttpServletResponse {
 
     @Override
     public PrintWriter getWriter() throws IOException {
-//        ResponseStream responseStream = new ResponseStream(this);
-//        responseStream.setCommit(false);
-//        OutputStreamWriter osr = new OutputStreamWriter(responseStream, getCharacterEncoding());
-//        writer = new PrintWriter(osr);
+        ResponseStream responseStream = new ResponseStream(this);
+        responseStream.setCommit(false);
+        OutputStreamWriter osr = new OutputStreamWriter(responseStream, getCharacterEncoding());
+        writer = new ResponseWriter(osr);
         return writer;
     }
 

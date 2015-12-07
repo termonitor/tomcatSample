@@ -1,5 +1,6 @@
-package com.xiaoming.unit3;
+package com.xiaoming.unit3.http;
 
+import com.xiaoming.unit3.RequestStream;
 import org.apache.catalina.util.Enumerator;
 import org.apache.catalina.util.ParameterMap;
 import org.apache.catalina.util.RequestUtil;

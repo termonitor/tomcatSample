@@ -62,12 +62,14 @@
  */
 
 
-package com.xiaoming.unit3;
+package com.xiaoming.unit3.http;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.EOFException;
 
+import com.xiaoming.unit3.http.HttpHeader;
+import com.xiaoming.unit3.http.HttpRequestLine;
 import org.apache.catalina.connector.http.*;
 import org.apache.catalina.util.StringManager;
 
@@ -187,7 +189,7 @@ public class SocketInputStream extends InputStream {
      * read operations, or if the given buffer is not big enough to accomodate
      * the whole line.
      */
-    public void readRequestLine(com.xiaoming.unit3.HttpRequestLine requestLine)
+    public void readRequestLine(com.xiaoming.unit3.http.HttpRequestLine requestLine)
         throws IOException {
 
         // Recycling check
@@ -219,7 +221,7 @@ public class SocketInputStream extends InputStream {
         while (!space) {
             // if the buffer is full, extend it
             if (readCount >= maxRead) {
-                if ((2 * maxRead) <= com.xiaoming.unit3.HttpRequestLine.MAX_METHOD_SIZE) {
+                if ((2 * maxRead) <= HttpRequestLine.MAX_METHOD_SIZE) {
                     char[] newBuffer = new char[2 * maxRead];
                     System.arraycopy(requestLine.method, 0, newBuffer, 0,
                                      maxRead);
@@ -263,7 +265,7 @@ public class SocketInputStream extends InputStream {
         while (!space) {
             // if the buffer is full, extend it
             if (readCount >= maxRead) {
-                if ((2 * maxRead) <= com.xiaoming.unit3.HttpRequestLine.MAX_URI_SIZE) {
+                if ((2 * maxRead) <= HttpRequestLine.MAX_URI_SIZE) {
                     char[] newBuffer = new char[2 * maxRead];
                     System.arraycopy(requestLine.uri, 0, newBuffer, 0,
                                      maxRead);
@@ -306,7 +308,7 @@ public class SocketInputStream extends InputStream {
         while (!eol) {
             // if the buffer is full, extend it
             if (readCount >= maxRead) {
-                if ((2 * maxRead) <= com.xiaoming.unit3.HttpRequestLine.MAX_PROTOCOL_SIZE) {
+                if ((2 * maxRead) <= HttpRequestLine.MAX_PROTOCOL_SIZE) {
                     char[] newBuffer = new char[2 * maxRead];
                     System.arraycopy(requestLine.protocol, 0, newBuffer, 0,
                                      maxRead);
@@ -384,7 +386,7 @@ public class SocketInputStream extends InputStream {
         while (!colon) {
             // if the buffer is full, extend it
             if (readCount >= maxRead) {
-                if ((2 * maxRead) <= com.xiaoming.unit3.HttpHeader.MAX_NAME_SIZE) {
+                if ((2 * maxRead) <= com.xiaoming.unit3.http.HttpHeader.MAX_NAME_SIZE) {
                     char[] newBuffer = new char[2 * maxRead];
                     System.arraycopy(header.name, 0, newBuffer, 0, maxRead);
                     header.name = newBuffer;
@@ -458,7 +460,7 @@ public class SocketInputStream extends InputStream {
             while (!eol) {
                 // if the buffer is full, extend it
                 if (readCount >= maxRead) {
-                    if ((2 * maxRead) <= com.xiaoming.unit3.HttpHeader.MAX_VALUE_SIZE) {
+                    if ((2 * maxRead) <= HttpHeader.MAX_VALUE_SIZE) {
                         char[] newBuffer = new char[2 * maxRead];
                         System.arraycopy(header.value, 0, newBuffer, 0,
                                          maxRead);
@@ -501,7 +503,7 @@ public class SocketInputStream extends InputStream {
                 eol = false;
                 // if the buffer is full, extend it
                 if (readCount >= maxRead) {
-                    if ((2 * maxRead) <= com.xiaoming.unit3.HttpHeader.MAX_VALUE_SIZE) {
+                    if ((2 * maxRead) <= HttpHeader.MAX_VALUE_SIZE) {
                         char[] newBuffer = new char[2 * maxRead];
                         System.arraycopy(header.value, 0, newBuffer, 0,
                                          maxRead);

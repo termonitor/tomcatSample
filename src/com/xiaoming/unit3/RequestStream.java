@@ -1,6 +1,7 @@
 package com.xiaoming.unit3;
 
 import com.xiaoming.unit2.Constants;
+import com.xiaoming.unit3.http.HttpRequest;
 import org.apache.catalina.util.StringManager;
 import javax.servlet.ServletInputStream;
 import java.io.IOException;

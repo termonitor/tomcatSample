@@ -3,7 +3,6 @@ package com.xiaoming.unit3.http;
 import com.xiaoming.unit2.Constants;
 import com.xiaoming.unit3.ResponseStream;
 import com.xiaoming.unit3.ResponseWriter;
-import com.xiaoming.unit3.http.HttpRequest;
 import org.apache.catalina.util.CookieTools;
 
 import javax.servlet.*;

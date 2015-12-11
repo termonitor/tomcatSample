@@ -4,13 +4,35 @@ import org.apache.catalina.Container;
 import org.apache.catalina.Loader;
 
 import java.beans.PropertyChangeListener;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.net.URLStreamHandler;
 
 /**
  * Created by panxiaoming on 15/12/11.
  */
 public class SimpleLoader implements Loader {
 
-    
+    public static final String WEB_ROOT = System.getProperty("user.dir") + File.separator + "webroot";
+
+    public ClassLoader classLoader = null;
+    public Container container = null;
+
+    public SimpleLoader() {
+        try {
+            URL[] urls = new URL[1];
+            URLStreamHandler streamHandler = null;
+            File classPath = new File(WEB_ROOT);
+            String repository = (new URL("file", null, classPath.getCanonicalPath() + File.separator)).toString();
+            urls[0] = new URL(null, repository, streamHandler);
+            classLoader = new URLClassLoader(urls);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void addPropertyChangeListener(PropertyChangeListener listener) {
 
@@ -28,12 +50,12 @@ public class SimpleLoader implements Loader {
 
     @Override
     public ClassLoader getClassLoader() {
-        return null;
+        return classLoader;
     }
 
     @Override
     public Container getContainer() {
-        return null;
+        return container;
     }
 
     @Override
@@ -43,7 +65,7 @@ public class SimpleLoader implements Loader {
 
     @Override
     public String getInfo() {
-        return null;
+        return "A simple Loader";
     }
 
     @Override
@@ -63,7 +85,7 @@ public class SimpleLoader implements Loader {
 
     @Override
     public void setContainer(Container container) {
-
+        this.container = container;
     }
 
     @Override

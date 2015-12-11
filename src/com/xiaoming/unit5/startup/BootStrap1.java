@@ -22,8 +22,10 @@ public class BootStrap1 {
         Valve valve1 = new HeaderLoggerValve();
         Valve valve2 = new ClientIPLoggerValve();
         wrapper.setLoader(loader);
+        //pipeline 管道任务的顺序就像堆栈一样，先入的后作反应，因此ClientIPLoggerValve先触发，HeaderLoggerValve后触发
         ((Pipeline) wrapper).addValve(valve1);
         ((Pipeline) wrapper).addValve(valve2);
+
         connector.setContainer(wrapper);
 
         try{

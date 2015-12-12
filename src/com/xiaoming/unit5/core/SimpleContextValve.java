@@ -29,7 +29,7 @@ public class SimpleContextValve implements Valve, Contained {
     }
 
     @Override
-    public void invoke(Request request, Response response, ValveContext context) throws IOException, ServletException {
+    public void invoke(Request request, Response response, ValveContext valveContext) throws IOException, ServletException {
         if(!(request.getRequest() instanceof HttpServletRequest) || !(response.getResponse() instanceof HttpServletResponse)) {
             return;
         }

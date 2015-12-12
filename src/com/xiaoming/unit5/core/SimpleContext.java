@@ -637,22 +637,34 @@ public class SimpleContext implements Context, Pipeline {
 
     @Override
     public Container findChild(String name) {
-        return null;
+        if(name == null)
+            return null;
+        synchronized(children) {
+            return ((Container) children.get(name));
+        }
     }
 
     @Override
     public Container[] findChildren() {
-        return new Container[0];
+        synchronized(children) {
+            Container results[] = new Container[children.size()];
+            return ((Container[]) children.values().toArray(results));
+        }
     }
 
     @Override
     public Mapper findMapper(String protocol) {
-        return null;
+        if(mapper != null)
+            return mapper;
+        else
+            synchronized(mappers) {
+                return ((Mapper) mappers.get(protocol));
+            }
     }
 
     @Override
     public Mapper[] findMappers() {
-        return new Mapper[0];
+        return null;
     }
 
     @Override
@@ -711,12 +723,15 @@ public class SimpleContext implements Context, Pipeline {
 
     @Override
     public void invoke(Request request, Response response) throws IOException, ServletException {
-
+        pipeline.invoke(request, response);
     }
 
     @Override
     public Container map(Request request, boolean update) {
-        return null;
+        Mapper mapper = findMapper(request.getRequest().getProtocol());
+        if(mapper == null)
+            return null;
+        return mapper.map(request, update);
     }
 
     @Override
@@ -786,26 +801,26 @@ public class SimpleContext implements Context, Pipeline {
 
     @Override
     public void addValve(Valve valve) {
-
+        pipeline.addValve(valve);
     }
 
     @Override
     public Valve getBasic() {
-        return null;
+        return pipeline.getBasic();
     }
 
     @Override
     public Valve[] getValves() {
-        return new Valve[0];
+        return pipeline.getValves();
     }
 
     @Override
     public void removeValve(Valve valve) {
-
+        pipeline.removeValve(valve);
     }
 
     @Override
     public void setBasic(Valve valve) {
-
+        pipeline.setBasic(valve);
     }
 }

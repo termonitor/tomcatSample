@@ -25,6 +25,7 @@ public class SimpleContext implements Context, Pipeline, Lifecycle {
     private Container parent = null;
     protected LifecycleSupport lifecycle = new LifecycleSupport(this);
     protected boolean started = false;
+    private Logger logger = null;
 
     public SimpleContext() {
         pipeline.setBasic(new SimpleContextValve());
@@ -690,7 +691,7 @@ public class SimpleContext implements Context, Pipeline, Lifecycle {
 
     @Override
     public Logger getLogger() {
-        return null;
+        return logger;
     }
 
     @Override
@@ -768,7 +769,7 @@ public class SimpleContext implements Context, Pipeline, Lifecycle {
 
     @Override
     public void setLogger(Logger logger) {
-
+        this.logger = logger;
     }
 
     @Override
@@ -838,6 +839,7 @@ public class SimpleContext implements Context, Pipeline, Lifecycle {
 
     @Override
     public synchronized void start() throws LifecycleException {
+        log("starting Context");
         if(started)
             throw new LifecycleException("SimpleContext has already started");
         System.out.println("before_start_event");
@@ -860,10 +862,12 @@ public class SimpleContext implements Context, Pipeline, Lifecycle {
             e.printStackTrace();
         }
         System.out.println("after_start_event");
+        log("Context started");
     }
 
     @Override
     public void stop() throws LifecycleException {
+        log("stopping Context");
         if(!started)
             throw new LifecycleException("SimpleContext has not been started");
         System.out.println("before_stop_event");
@@ -886,5 +890,12 @@ public class SimpleContext implements Context, Pipeline, Lifecycle {
             e.printStackTrace();
         }
         System.out.println("after_stop_event");
+        log("Context stopped");
+    }
+
+    private void log(String message) {
+        Logger logger = this.getLogger();
+        if(logger != null)
+            logger.log(message);
     }
 }

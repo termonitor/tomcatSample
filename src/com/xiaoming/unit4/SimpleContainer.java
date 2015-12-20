@@ -213,4 +213,9 @@ public class SimpleContainer implements Container {
     public void setResources(DirContext resources) {
 
     }
+
+    @Override
+    public ContainerListener[] findContainerListeners() {
+        return null;
+    }
 }

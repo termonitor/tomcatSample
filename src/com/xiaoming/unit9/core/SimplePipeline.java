@@ -102,4 +102,9 @@ public class SimplePipeline implements Pipeline, Lifecycle {
     public void stop() throws LifecycleException {
 
     }
+
+    @Override
+    public LifecycleListener[] findLifecycleListeners() {
+        return null;
+    }
 }

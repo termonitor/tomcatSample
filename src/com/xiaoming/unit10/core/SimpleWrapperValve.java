@@ -46,9 +46,6 @@ public class SimpleWrapperValve implements Valve, Contained {
             hsp = (HttpServletResponse) serp;
         }
 
-        Context context1 = (Context) wrapper.getParent();
-        request.setContext(context1);
-
         try {
             servlet = wrapper.allocate();
             if(hsq != null && hsp != null) {

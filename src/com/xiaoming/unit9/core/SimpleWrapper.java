@@ -443,4 +443,14 @@ public class SimpleWrapper implements Wrapper, Pipeline, Lifecycle {
         }
         System.out.println("after_stop_event");
     }
+
+    @Override
+    public ContainerListener[] findContainerListeners() {
+        return null;
+    }
+
+    @Override
+    public LifecycleListener[] findLifecycleListeners() {
+        return null;
+    }
 }

@@ -390,4 +390,9 @@ public class SimpleWrapper implements Wrapper, Pipeline {
     public void setResources(DirContext resources) {
 
     }
+
+    @Override
+    public ContainerListener[] findContainerListeners() {
+        return null;
+    }
 }

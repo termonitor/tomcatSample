@@ -1,6 +1,7 @@
 package com.xiaoming.unit5.core;
 
 import org.apache.catalina.Container;
+import org.apache.catalina.DefaultContext;
 import org.apache.catalina.Loader;
 
 import java.beans.PropertyChangeListener;
@@ -95,6 +96,16 @@ public class SimpleLoader implements Loader {
 
     @Override
     public void setReloadable(boolean reloadable) {
+
+    }
+
+    @Override
+    public DefaultContext getDefaultContext() {
+        return null;
+    }
+
+    @Override
+    public void setDefaultContext(DefaultContext defaultContext) {
 
     }
 }

@@ -23,11 +23,10 @@ public class SimpleRealm implements Realm {
 
     public void createUserDatabase() {
         User user1 = new User("xiaoming", "hello");
-        user1.addRole("manager");
         user1.addRole("programmer");
         User user2 = new User("daming", "world");
         user2.addRole("programmer");
-
+        user2.addRole("manager");
         users.add(user1);
         users.add(user2);
     }

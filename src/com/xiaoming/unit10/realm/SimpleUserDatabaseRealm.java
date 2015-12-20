@@ -21,6 +21,7 @@ public class SimpleUserDatabaseRealm extends RealmBase {
     protected String resourceName = "UserDatabase";
 
     public Principal authenticate(String username, String credentials) {
+        System.out.println("realm.authenticcate()");
         User user = database.findUser(username);
         if(user == null)
             return null;

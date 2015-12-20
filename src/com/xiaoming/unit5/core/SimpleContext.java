@@ -823,4 +823,49 @@ public class SimpleContext implements Context, Pipeline {
     public void setBasic(Valve valve) {
         pipeline.setBasic(valve);
     }
+
+    @Override
+    public NamingResources getNamingResources() {
+        return null;
+    }
+
+    @Override
+    public void setNamingResources(NamingResources namingResources) {
+
+    }
+
+    @Override
+    public boolean getPrivileged() {
+        return false;
+    }
+
+    @Override
+    public void setPrivileged(boolean b) {
+
+    }
+
+    @Override
+    public void addResourceLink(ContextResourceLink contextResourceLink) {
+
+    }
+
+    @Override
+    public ContextResourceLink findResourceLink(String s) {
+        return null;
+    }
+
+    @Override
+    public ContextResourceLink[] findResourceLinks() {
+        return null;
+    }
+
+    @Override
+    public void removeResourceLink(String s) {
+
+    }
+
+    @Override
+    public ContainerListener[] findContainerListeners() {
+        return null;
+    }
 }

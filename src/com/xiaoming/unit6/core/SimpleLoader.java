@@ -106,10 +106,6 @@ public class SimpleLoader implements Loader, Lifecycle {
 
     }
 
-//    public LifecycleListener[] findLifecycleListeners() {
-//        return null;
-//    }
-
     @Override
     public synchronized void start() throws LifecycleException {
         System.out.println("Starting SimpleLoader");
@@ -117,6 +113,21 @@ public class SimpleLoader implements Loader, Lifecycle {
 
     @Override
     public void stop() throws LifecycleException {
+
+    }
+
+    @Override
+    public LifecycleListener[] findLifecycleListeners() {
+        return null;
+    }
+
+    @Override
+    public DefaultContext getDefaultContext() {
+        return null;
+    }
+
+    @Override
+    public void setDefaultContext(DefaultContext defaultContext) {
 
     }
 }

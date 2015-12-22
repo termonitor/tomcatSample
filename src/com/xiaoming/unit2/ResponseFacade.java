@@ -23,11 +23,6 @@ public class ResponseFacade implements ServletResponse {
     }
 
     @Override
-    public String getContentType() {
-        return response.getContentType();
-    }
-
-    @Override
     public ServletOutputStream getOutputStream() throws IOException {
         return response.getOutputStream();
     }
@@ -35,11 +30,6 @@ public class ResponseFacade implements ServletResponse {
     @Override
     public PrintWriter getWriter() throws IOException {
         return response.getWriter();
-    }
-
-    @Override
-    public void setCharacterEncoding(String s) {
-        response.setCharacterEncoding(s);
     }
 
     @Override

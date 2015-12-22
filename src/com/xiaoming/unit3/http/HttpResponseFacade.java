@@ -138,34 +138,4 @@ public class HttpResponseFacade implements HttpServletResponse {
     public void setStatus(int sc, String message) {
         response.setStatus(sc, message);
     }
-
-    @Override
-    public int getStatus() {
-        return response.getStatus();
-    }
-
-    @Override
-    public String getHeader(String s) {
-        return response.getHeader(s);
-    }
-
-    @Override
-    public Collection<String> getHeaders(String s) {
-        return response.getHeaders(s);
-    }
-
-    @Override
-    public Collection<String> getHeaderNames() {
-        return response.getHeaderNames();
-    }
-
-    @Override
-    public String getContentType() {
-        return response.getContentType();
-    }
-
-    @Override
-    public void setCharacterEncoding(String s) {
-        response.setCharacterEncoding(s);
-    }
 }

@@ -1,4 +1,4 @@
-package unit16;
+package com.xiaoming.unit16;
 
 import javax.swing.*;
 import java.awt.*;

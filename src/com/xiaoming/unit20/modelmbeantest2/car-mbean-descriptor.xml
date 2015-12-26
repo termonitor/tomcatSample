@@ -10,6 +10,18 @@
         <attribute name="Color"
                    description="The Car color"
                    type="java.lang.String" />
+        <operation name="getColor"
+                   description="get Car color"
+                   impact="ACTION"
+                   returnType="java.lang.String">
+        </operation>
+        <operation name="setColor"
+                   description="set Car color"
+                   impact="ACTION"
+                   returnType="void">
+            <parameter name="color" description="color"
+                       type="java.lang.String" />
+        </operation>
         <operation name="drive"
                    description="drive method"
                    impact="ACTION"
